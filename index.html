@@ -117,18 +117,17 @@
   const isIOS     = /iPhone|iPad|iPod/i.test(ua);
   const isAndroid = /Android/i.test(ua);
 
-  if (isIOS || isAndroid) {
-    // Show spinner, auto-redirect after 800ms
-    document.getElementById('redirecting').style.display = 'flex';
-    const msg = document.getElementById('redirect-msg');
-    if (isIOS) {
-      msg.textContent = 'Taking you to the App Store\u2026';
-      setTimeout(() => { window.location.href = IOS; }, 800);
-    } else {
-      msg.textContent = 'Taking you to Google Play\u2026';
-      setTimeout(() => { window.location.href = ANDROID; }, 800);
-    }
-  }
+if (isIOS) {
+  window.location.replace(IOS);
+}
+
+else if (isAndroid) {
+  window.location.replace(ANDROID);
+}
+
+else {
+  window.location.replace("https://www.mebuapp.com");
+}
 
   // Highlight the right button based on device
   if (isIOS) {
